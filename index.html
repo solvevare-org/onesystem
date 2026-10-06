@@ -1,38 +1,2885 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One System Landing Page</title>
+<meta name="description"
+  content="Give every client their own uniform ordering website in under 10 minutes. Inventory and point of sale already connected. Book a demo with Solvevare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Bitter:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+  /* Layout: direction B, "embroidered patch". Client patches and satin-stitch dashed lines are the signature;
+   woven neck labels mark each section. Rhythm: split hero over a grey stage, rule strip, a stitched quote list,
+   3 differently shaped product blocks, a navy billing band with stitched hems, a patch wall, proof patches, FAQ, booking.
+   Single light theme on purpose (the brief asks for light). Orange is used only on things you can click. */
+  :root {
+    --paper: #FFFFFF;
+    --mist: #F2F4F7;
+    --rule: #DDE2E9;
+    --ink: #14213D;
+    --ink-2: #4A5568;
+    --stitch: #8FA3C9;
+    --steel: #9AA3B0;
+    --orange: #E8590C;
+    --orange-d: #C94A06;
+    --navy: #1D3461;
+    --ceil: #6F86B8;
+    --maroon: #6E2233;
+    --olive: #2F3A2E;
+    --hivis: #D9F23A;
+    --gold: #A87A1E;
+    --forest: #2E5E4E;
+    --charcoal: #3E4A5C;
+    --khaki: #B9A57A;
+    --ok: #1F7A4D;
+    --ok-bg: #E2F2E9;
+    --warn: #8A5A00;
+    --warn-bg: #FBEFD5;
+    --bad: #A8232F;
+    --bad-bg: #FBE5E7;
+    --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    --slab: "Bitter", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    color-scheme: light;
+  }
 
+  * {
+    box-sizing: border-box
+  }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Solvevare One System</title>
-  <link rel="stylesheet" href="css/style.css">
+  html {
+    scroll-behavior: smooth
+  }
 
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 19px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased
+  }
 
-</head>
+  .wrap {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px
+  }
 
-<body>
+  h1,
+  h2,
+  h3 {
+    font-family: var(--slab);
+    font-weight: 800;
+    line-height: 1.06;
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -.015em
+  }
 
-  <nav>
-    <a id="logo" href="https://www.solvevare.com" class="logo">Solvevare</a>
-    <a href="https://calendly.com/solvevare" class="nav-cta">Get in Touch</a>
-  </nav>
+  h2 {
+    font-size: clamp(36px, 4.4vw, 54px)
+  }
 
-  <div class="hero">
-    <h1>One system. Every contract. Every order.</h1>
-    <p>Watch to see how it works — then let's talk about what it could do for your business.</p>
+  h3 {
+    font-size: clamp(28px, 2.9vw, 38px)
+  }
+
+  p {
+    margin: 0
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 3px;
+    border-radius: 4px
+  }
+
+  .lede {
+    font-size: clamp(19px, 1.7vw, 21px);
+    color: var(--ink-2);
+    max-width: 42ch
+  }
+
+  .sew {
+    text-decoration: none;
+    border-bottom: 3px dashed var(--stitch);
+    padding-bottom: 1px
+  }
+
+  /* Section label: a woven neck label with a stitched edge */
+  .label {
+    position: relative;
+    display: inline-block;
+    align-self: start;
+    justify-self: start;
+    background: var(--navy);
+    color: #fff;
+    font: 700 14px/1 var(--sans);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 11px 16px;
+    border-radius: 2px
+  }
+
+  .label::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border: 1px dashed rgba(255, 255, 255, .55);
+    pointer-events: none
+  }
+
+  /* Stitch line between sections */
+  .seam {
+    border: 0;
+    border-top: 2px dashed var(--stitch);
+    margin: 0 auto;
+    max-width: 1152px
+  }
+
+  /* Buttons: the only orange */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--orange);
+    color: #fff;
+    font: 700 19px/1 var(--sans);
+    text-decoration: none;
+    padding: 20px 30px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .15s
+  }
+
+  .btn:hover {
+    background: var(--orange-d)
+  }
+
+  .btn-sm {
+    font-size: 16px;
+    padding: 13px 18px
+  }
+
+  .chatlink {
+    font: 600 18px/1.3 var(--sans);
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer
+  }
+
+  .chatlink:hover {
+    color: var(--orange-d)
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 24px
+  }
+
+  /* Header */
+  .top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: rgba(255, 255, 255, .97);
+    border-bottom: 1px solid var(--rule)
+  }
+
+  .top .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    height: 72px
+  }
+
+  .logo {
+    font: 700 21px/1 var(--sans);
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    white-space: nowrap
+  }
+
+  .logo small {
+    font: 600 14px/1 var(--sans);
+    color: var(--ink-2)
+  }
+
+  .top .chatlink {
+    font-size: 16px
+  }
+
+  /* Patches (used in hero, who, proof) */
+  .patch {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    flex: none;
+    box-shadow: 0 0 0 5px var(--edge, var(--pc)), 0 6px 14px rgba(20, 33, 61, .22);
+    font: 800 15px/1.1 var(--slab);
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    padding: 18px;
+    background-color: var(--pc);
+    background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, .07) 0 2px, transparent 2px 4px)
+  }
+
+  .patch::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border-radius: inherit;
+    border: 2px dashed rgba(255, 255, 255, .7);
+    pointer-events: none
+  }
+
+  .patch.shield {
+    border-radius: 14px 14px 50% 50% / 14px 14px 60% 60%
+  }
+
+  .patch.shield::after {
+    border-radius: 9px 9px 50% 50% / 9px 9px 60% 60%
+  }
+
+  .patch.rect {
+    width: 168px;
+    height: 108px;
+    border-radius: 12px
+  }
+
+  .patch.rect::after {
+    border-radius: 7px
+  }
+
+  .patch.light {
+    color: var(--navy);
+    --edge: var(--navy)
+  }
+
+  .patch.light::after {
+    border-color: rgba(29, 52, 97, .45)
+  }
+
+  /* Hero */
+  .hero .lead {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+    gap: 56px;
+    padding-block: 48px 44px;
+    align-items: end
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 5vw, 62px);
+    line-height: 1.04
+  }
+
+  .hero .side {
+    display: grid;
+    gap: 22px
+  }
+
+  .stage {
+    background: var(--mist);
+    position: relative;
+    padding-top: 40px
+  }
+
+  .stage::before {
+    content: "";
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    top: 15px;
+    border-top: 2px dashed #C4CBD6
+  }
+
+  .stage-in {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 18px;
+    align-items: stretch
+  }
+
+  .stage figure {
+    margin: 0;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    position: relative;
+    min-height: 0
+  }
+
+  .stage figure img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60% 50%
+  }
+
+  .stage figcaption {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    background: rgba(255, 255, 255, .95);
+    font: 600 15px/1.3 var(--sans);
+    padding: 7px 11px;
+    border-radius: 6px
+  }
+
+  .patches {
+    display: flex;
+    gap: 22px;
+    justify-content: space-between;
+    margin-top: -58px;
+    position: relative;
+    z-index: 2
+  }
+
+  .pw {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    text-align: center
+  }
+
+  .pw small {
+    font: 600 15px/1.3 var(--sans);
+    color: var(--ink-2)
+  }
+
+  .pw small b {
+    display: block;
+    color: var(--ink)
+  }
+
+  .hero .caption {
+    padding-block: 22px 40px;
+    font-size: 17px;
+    color: var(--ink-2)
+  }
+
+  /* Video poster: the real setup screen with a play button */
+  .vid {
+    position: relative;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--rule);
+    border-bottom: 0;
+    aspect-ratio: 16/9;
+    max-width: 100%;
+    font-size: 13px;
+    color: var(--ink)
+  }
+
+  .vid iframe,
+  .vid video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+    background: #000
+  }
+
+  .vbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    background: var(--mist);
+    border-bottom: 1px solid var(--rule);
+    font-size: 12.5px;
+    color: var(--ink-2);
+    white-space: nowrap
+  }
+
+  .vbar b {
+    color: var(--ink);
+    font-weight: 700
+  }
+
+  .vbar span:last-child {
+    margin-left: auto
+  }
+
+  .vbody {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    height: calc(100% - 35px)
+  }
+
+  .steps {
+    background: #FAFBFC;
+    border-right: 1px solid var(--rule);
+    padding: 12px 10px;
+    display: grid;
+    gap: 4px;
+    align-content: start;
+    font-size: 12px
+  }
+
+  .steps div {
+    padding: 6px 8px;
+    border-radius: 6px;
+    color: var(--ink-2);
+    white-space: nowrap
+  }
+
+  .steps .done {
+    color: var(--ok)
+  }
+
+  .steps .now {
+    background: var(--ink);
+    color: #fff;
+    font-weight: 600
+  }
+
+  .vmain {
+    padding: 12px 16px;
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    min-width: 0
+  }
+
+  .vmain h4 {
+    margin: 0;
+    font: 700 15px/1.2 var(--sans)
+  }
+
+  .vrow {
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1.6fr) minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--mist);
+    white-space: nowrap
+  }
+
+  .vrow .cb {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1.5px solid var(--ink-2)
+  }
+
+  .vrow .cb.on {
+    background: var(--ink);
+    border-color: var(--ink)
+  }
+
+  .vrow em {
+    font-style: normal;
+    color: var(--ink-2)
+  }
+
+  .sz {
+    display: flex;
+    gap: 3px;
+    overflow: hidden
+  }
+
+  .sz i {
+    font-style: normal;
+    font-size: 10.5px;
+    font-weight: 600;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 1px 4px
+  }
+
+  .sw {
+    display: flex;
+    gap: 4px
+  }
+
+  .sw i {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, .15)
+  }
+
+  .play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, .35);
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    width: 100%
+  }
+
+  .play>span {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border-radius: 999px;
+    padding: 10px 22px 10px 10px;
+    box-shadow: 0 8px 24px rgba(20, 33, 61, .18);
+    font: 700 17px/1.2 var(--sans);
+    color: var(--ink);
+    text-align: left
+  }
+
+  .play>span i {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: grid;
+    place-items: center;
+    flex: none
+  }
+
+  .play>span i::after {
+    content: "";
+    border-left: 17px solid #fff;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    margin-left: 5px
+  }
+
+  .play small {
+    display: block;
+    font: 400 14px/1.3 var(--sans);
+    color: var(--ink-2)
+  }
+
+  .play:hover>span i {
+    background: var(--orange-d)
+  }
+
+  /* Suppliers */
+  .suppliers {
+    border-block: 1px solid var(--rule)
+  }
+
+  .suppliers .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 0;
+    padding-block: 26px
+  }
+
+  .suppliers .lead {
+    font: 700 14px/1.2 var(--sans);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-right: 28px
+  }
+
+  .suppliers ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center
+  }
+
+  .suppliers li {
+    font: 800 22px/1 var(--slab);
+    color: var(--ink);
+    padding: 4px 22px;
+    border-left: 1px solid var(--rule)
+  }
+
+  .suppliers li:first-child {
+    border-left: 0;
+    padding-left: 0
+  }
+
+  .suppliers li.any {
+    font: 600 18px/1 var(--sans);
+    color: var(--ink-2);
+    border-left: 0;
+    border-bottom: 2px dashed var(--stitch);
+    padding: 4px 0 6px;
+    margin-left: 22px
+  }
+
+  /* Pains: a stitched list in the owner's voice */
+  .pains {
+    padding-block: 110px
+  }
+
+  .pains .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: 64px;
+    align-items: start
+  }
+
+  .pains .copy {
+    display: grid;
+    gap: 22px;
+    position: sticky;
+    top: 110px
+  }
+
+  .quotes {
+    list-style: none;
+    margin: 0;
+    padding: 0
+  }
+
+  .quotes li {
+    display: grid;
+    gap: 8px;
+    padding: 28px 0;
+    border-top: 2px dashed var(--stitch)
+  }
+
+  .quotes li:first-child {
+    border-top: 0;
+    padding-top: 4px
+  }
+
+  .quotes blockquote {
+    margin: 0;
+    font: 700 clamp(25px, 2.4vw, 31px)/1.2 var(--slab);
+    color: var(--ink)
+  }
+
+  .quotes p {
+    font-size: 18.5px;
+    color: var(--ink-2)
+  }
+
+  .verdict {
+    margin-top: 24px;
+    background: var(--mist);
+    border-radius: 12px;
+    padding: 30px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px 32px;
+    position: relative
+  }
+
+  .verdict::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 2px dashed #C4CBD6;
+    border-radius: 8px;
+    pointer-events: none
+  }
+
+  .verdict p {
+    font: 800 clamp(23px, 2.2vw, 28px)/1.2 var(--slab);
+    max-width: 26ch
+  }
+
+  .verdict .btn {
+    position: relative;
+    z-index: 1
+  }
+
+  /* Product */
+  .product {
+    padding-block: 110px 0
+  }
+
+  .product .intro {
+    display: grid;
+    gap: 20px;
+    max-width: 800px;
+    margin-bottom: 80px
+  }
+
+  .part {
+    display: grid;
+    gap: 18px;
+    align-content: start
+  }
+
+  .part .num {
+    font: 700 14px/1 var(--sans);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-2)
+  }
+
+  .part>p {
+    font-size: 20px;
+    color: var(--ink-2)
+  }
+
+  .ticks {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px
+  }
+
+  .ticks li {
+    position: relative;
+    padding-left: 30px;
+    font-size: 18.5px
+  }
+
+  .ticks li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    width: 14px;
+    height: 8px;
+    border-left: 3px solid var(--navy);
+    border-bottom: 3px solid var(--navy);
+    transform: rotate(-45deg)
+  }
+
+  .screen {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(20, 33, 61, .04), 0 18px 40px rgba(20, 33, 61, .10);
+    font-size: 15px;
+    min-width: 0
+  }
+
+  .sbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--mist);
+    font-size: 13.5px;
+    color: var(--ink-2);
+    white-space: nowrap;
+    overflow: hidden
+  }
+
+  .sbar b {
+    color: var(--ink)
+  }
+
+  .sbar span:last-child {
+    margin-left: auto
+  }
+
+  /* Part 1: client store */
+  .p1 {
+    display: grid;
+    grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+    gap: 64px;
+    align-items: center
+  }
+
+  .store-h {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--rule)
+  }
+
+  .store-h .who-store {
+    display: flex;
+    align-items: center;
+    gap: 14px
+  }
+
+  .store-h .mini {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    font-size: 0;
+    box-shadow: 0 0 0 3px var(--pc)
+  }
+
+  .store-h .mini::after {
+    inset: 4px;
+    border-width: 1.5px
+  }
+
+  .store-h b {
+    font: 800 20px/1.1 var(--slab)
+  }
+
+  .allow {
+    display: grid;
+    gap: 6px;
+    min-width: 220px
+  }
+
+  .allow .kv {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    gap: 10px
+  }
+
+  .allow .kv span {
+    color: var(--ink-2)
+  }
+
+  .meter {
+    height: 8px;
+    background: var(--mist);
+    border-radius: 99px;
+    overflow: hidden
+  }
+
+  .meter i {
+    display: block;
+    height: 100%;
+    background: var(--ok)
+  }
+
+  .store-b {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr)
+  }
+
+  .store-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 18px;
+    border-right: 1px solid var(--rule)
+  }
+
+  .prod {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px;
+    display: grid;
+    gap: 6px;
+    font-size: 14px
+  }
+
+  .prod.sel {
+    border-color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--ink)
+  }
+
+  .prod .im {
+    aspect-ratio: 1;
+    border-radius: 6px;
+    display: grid;
+    place-items: center
+  }
+
+  .prod .im svg {
+    width: 62%;
+    height: 62%
+  }
+
+  .prod small {
+    color: var(--ink-2);
+    font-size: 13px
+  }
+
+  .pdp {
+    padding: 18px 20px;
+    display: grid;
+    gap: 14px;
+    align-content: start
+  }
+
+  .pdp h4 {
+    margin: 0;
+    font: 700 19px/1.2 var(--sans)
+  }
+
+  .pdp .lbl {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 6px
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+  }
+
+  .chips i {
+    font-style: normal;
+    font-size: 13.5px;
+    font-weight: 600;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 6px 10px;
+    min-width: 40px;
+    text-align: center
+  }
+
+  .chips i.on {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink)
+  }
+
+  .chips i.off {
+    color: #B0B7C3;
+    text-decoration: line-through
+  }
+
+  .colors {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 14px
+  }
+
+  .colors i {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, .15)
+  }
+
+  .colors i.on {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ink)
+  }
+
+  .addbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: var(--mist);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px
+  }
+
+  .addbar span:last-child {
+    background: var(--ink);
+    color: #fff;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-weight: 600
+  }
+
+  /* Part 2: inventory, full width */
+  .p2 {
+    margin-top: 140px;
+    display: grid;
+    gap: 40px
+  }
+
+  .p2 .top2 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px 64px;
+    align-items: end
+  }
+
+  .inv {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr)
+  }
+
+  .runs {
+    padding: 22px;
+    border-right: 1px solid var(--rule);
+    display: grid;
+    gap: 14px;
+    align-content: start
+  }
+
+  .runs h4 {
+    margin: 0;
+    font: 700 18px/1.2 var(--sans)
+  }
+
+  .runs h4 small {
+    display: block;
+    font: 400 14px/1.4 var(--sans);
+    color: var(--ink-2);
+    margin-top: 2px
+  }
+
+  .matrix {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+    font-size: 15px
+  }
+
+  .matrix th {
+    font: 700 12.5px/1 var(--sans);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    padding: 8px 6px;
+    text-align: center
+  }
+
+  .matrix th:first-child {
+    text-align: left
+  }
+
+  .matrix td {
+    padding: 9px 6px;
+    text-align: center;
+    border-top: 1px solid var(--mist)
+  }
+
+  .matrix td:first-child {
+    text-align: left;
+    white-space: nowrap
+  }
+
+  .matrix td:first-child i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: -1px;
+    border: 1px solid rgba(0, 0, 0, .15)
+  }
+
+  .matrix .lo {
+    background: var(--warn-bg);
+    color: var(--warn);
+    font-weight: 700
+  }
+
+  .matrix .zero {
+    background: var(--bad-bg);
+    color: var(--bad);
+    font-weight: 700
+  }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 13.5px;
+    color: var(--ink-2)
+  }
+
+  .legend span::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px
+  }
+
+  .legend .l1::before {
+    background: var(--warn-bg);
+    box-shadow: inset 0 0 0 1px var(--warn)
+  }
+
+  .legend .l2::before {
+    background: var(--bad-bg);
+    box-shadow: inset 0 0 0 1px var(--bad)
+  }
+
+  .bins {
+    padding: 22px;
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    background: #FAFBFC
+  }
+
+  .bins h4 {
+    margin: 0 0 4px;
+    font: 700 18px/1.2 var(--sans)
+  }
+
+  .binrow {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 12px;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    font-size: 14.5px
+  }
+
+  .binrow b {
+    font: 600 14px/1 var(--mono);
+    color: var(--ink)
+  }
+
+  .binrow small {
+    display: block;
+    color: var(--ink-2);
+    font-size: 13px
+  }
+
+  .chip {
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 5px 9px;
+    border-radius: 999px;
+    white-space: nowrap
+  }
+
+  .chip.ok {
+    background: var(--ok-bg);
+    color: var(--ok)
+  }
+
+  .chip.warn {
+    background: var(--warn-bg);
+    color: var(--warn)
+  }
+
+  .chip.bad {
+    background: var(--bad-bg);
+    color: var(--bad)
+  }
+
+  /* Part 3: counter */
+  .counter {
+    margin-top: 140px;
+    background: var(--mist);
+    padding-block: 100px
+  }
+
+  .p3 {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+    gap: 64px;
+    align-items: center
+  }
+
+  .pos {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr)
+  }
+
+  .pos-l {
+    padding: 18px;
+    border-right: 1px solid var(--rule);
+    display: grid;
+    gap: 10px;
+    align-content: start
+  }
+
+  .scan {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px dashed var(--steel);
+    border-radius: 8px;
+    font: 400 13.5px/1.3 var(--mono);
+    color: var(--ink-2)
+  }
+
+  .scan b {
+    color: var(--ink);
+    font-weight: 600
+  }
+
+  .cust {
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--mist);
+    font-size: 15px
+  }
+
+  .cust small {
+    display: block;
+    font-size: 12.5px;
+    color: var(--ink-2)
+  }
+
+  .line {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--rule);
+    font-size: 15px
+  }
+
+  .line em {
+    display: block;
+    font-style: normal;
+    color: var(--ink-2);
+    font-size: 13px
+  }
+
+  .pos-r {
+    padding: 18px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    background: #FAFBFC
+  }
+
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    gap: 8px
+  }
+
+  .kv span {
+    color: var(--ink-2)
+  }
+
+  .charge {
+    background: var(--ink);
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 4px
+  }
+
+  .offline {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+    color: var(--ok);
+    font-weight: 600
+  }
+
+  .offline::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ok)
+  }
+
+  .p3 .side {
+    display: grid;
+    gap: 22px
+  }
+
+  .p3 figure {
+    margin: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative
+  }
+
+  .p3 figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: 50% 60%
+  }
+
+  .p3 figcaption {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    background: rgba(255, 255, 255, .95);
+    font: 600 14px/1.3 var(--sans);
+    padding: 6px 10px;
+    border-radius: 6px
+  }
+
+  /* Billing band, hemmed top and bottom with a stitch line */
+  .billing {
+    background: var(--navy);
+    color: #fff;
+    padding-block: 110px;
+    position: relative
+  }
+
+  .billing::before,
+  .billing::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 2px dashed rgba(143, 163, 201, .6)
+  }
+
+  .billing::before {
+    top: 14px
+  }
+
+  .billing::after {
+    bottom: 14px
+  }
+
+  .billing .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: 64px;
+    align-items: start
+  }
+
+  .billing .label {
+    background: #fff;
+    color: var(--navy)
+  }
+
+  .billing .label::after {
+    border-color: rgba(29, 52, 97, .45)
+  }
+
+  .billing .copy {
+    display: grid;
+    gap: 24px
+  }
+
+  .billing .lede {
+    color: #C9D3E6
+  }
+
+  .flow {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    counter-reset: f
+  }
+
+  .flow li {
+    counter-increment: f;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px dashed #4D6796
+  }
+
+  .flow li::before {
+    content: counter(f);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--navy);
+    display: grid;
+    place-items: center;
+    font: 800 20px/1 var(--slab)
+  }
+
+  .flow b {
+    display: block;
+    font: 800 23px/1.15 var(--slab);
+    margin-bottom: 4px
+  }
+
+  .flow span {
+    color: #C9D3E6;
+    font-size: 18px
+  }
+
+  .stmt {
+    background: #FFFEFA;
+    color: #222B3A;
+    font: 400 14px/1.5 var(--mono);
+    padding: 26px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+    min-width: 0
+  }
+
+  .stmt .t1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: .04em;
+    flex-wrap: wrap
+  }
+
+  .stmt hr {
+    border: 0;
+    border-top: 1px dashed #9AA3B2;
+    margin: 12px 0
+  }
+
+  .stmt .sc {
+    overflow-x: auto
+  }
+
+  .stmt table {
+    width: 100%;
+    border-collapse: collapse;
+    font: inherit;
+    min-width: 440px;
+    font-variant-numeric: tabular-nums
+  }
+
+  .stmt th {
+    font-weight: 600;
+    text-align: left;
+    font-size: 12px;
+    color: #6B7486;
+    padding: 0 6px 6px 0
+  }
+
+  .stmt td {
+    padding: 4px 6px 4px 0;
+    vertical-align: top
+  }
+
+  .stmt .r {
+    text-align: right
+  }
+
+  .stmt .sub td {
+    color: #6B7486;
+    font-size: 13px;
+    padding-top: 0
+  }
+
+  .stmt .tot td {
+    font-weight: 600;
+    border-top: 1px solid #222B3A;
+    padding-top: 8px
+  }
+
+  .stmt .meta {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    font-size: 13.5px
+  }
+
+  .stmt .meta span:nth-child(odd) {
+    color: #6B7486
+  }
+
+  /* Who: a wall of patches, alphabetical so no industry leads */
+  .who {
+    padding-block: 120px
+  }
+
+  .who .head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    gap: 24px 64px;
+    align-items: end;
+    margin-bottom: 64px
+  }
+
+  .who .head .note {
+    font-size: 20px;
+    color: var(--ink-2)
+  }
+
+  .who .head .note b {
+    color: var(--ink)
+  }
+
+  .wall {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 52px 28px
+  }
+
+  .wall li {
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+    text-align: center
+  }
+
+  .wall .patch {
+    width: 150px;
+    height: 150px;
+    font-size: 15.5px
+  }
+
+  .wall .patch.rect {
+    width: 180px;
+    height: 122px
+  }
+
+  .wall li>span {
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: 22ch
+  }
+
+  /* Proof */
+  .proof {
+    background: var(--mist);
+    padding-block: 110px 120px
+  }
+
+  .proof .head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    gap: 24px 64px;
+    align-items: end;
+    margin-bottom: 64px
+  }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 64px;
+    align-items: end
+  }
+
+  .stat {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    text-align: center
+  }
+
+  .stat .patch {
+    width: 220px;
+    height: 220px;
+    font: 800 52px/1 var(--slab);
+    text-transform: none;
+    letter-spacing: -.01em;
+    font-variant-numeric: tabular-nums
+  }
+
+  .stat .patch.shield {
+    width: 210px;
+    height: 236px
+  }
+
+  .stat .patch.rect {
+    width: 280px;
+    height: 170px
+  }
+
+  .stat>span {
+    font: 600 19px/1.3 var(--sans);
+    color: var(--ink-2);
+    max-width: 22ch
+  }
+
+  .stat>span b {
+    color: var(--ink)
+  }
+
+  .proof .after {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 2px dashed var(--stitch);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+    align-items: center;
+    justify-content: space-between
+  }
+
+  .proof .after p {
+    font-size: 20px;
+    color: var(--ink-2);
+    max-width: 52ch
+  }
+
+  /* FAQ */
+  .faq {
+    padding-block: 120px
+  }
+
+  .faq .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr);
+    gap: 64px;
+    align-items: start
+  }
+
+  .faq .copy {
+    display: grid;
+    gap: 22px
+  }
+
+  .qs details {
+    border-top: 2px dashed var(--stitch)
+  }
+
+  .qs details:last-child {
+    border-bottom: 2px dashed var(--stitch)
+  }
+
+  .qs summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0;
+    font: 700 21px/1.35 var(--sans)
+  }
+
+  .qs summary::-webkit-details-marker {
+    display: none
+  }
+
+  .qs summary::after {
+    content: "+";
+    font: 400 32px/1 var(--sans);
+    color: var(--ink-2);
+    flex: none;
+    transition: transform .2s
+  }
+
+  .qs details[open] summary::after {
+    transform: rotate(45deg)
+  }
+
+  .qs details p {
+    padding: 0 0 26px;
+    color: var(--ink-2);
+    font-size: 19px;
+    max-width: 60ch
+  }
+
+  /* Book */
+  .book {
+    padding-block: 110px 130px;
+    border-top: 1px solid var(--rule)
+  }
+
+  .book .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: 64px;
+    align-items: start
+  }
+
+  .book .copy {
+    display: grid;
+    gap: 24px
+  }
+
+  .cal {
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(20, 33, 61, .04), 0 18px 40px rgba(20, 33, 61, .10);
+    min-width: 0;
+    background: #fff
+  }
+
+  .cal-head {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap
+  }
+
+  .cal-head b {
+    font: 800 24px/1 var(--slab)
+  }
+
+  .cal-head span {
+    font-size: 16px;
+    color: var(--ink-2);
+    font-weight: 600
+  }
+
+  #booking-embed iframe {
+    width: 100%;
+    height: 700px;
+    border: 0;
+    display: block
+  }
+
+  .cal-body {
+    padding: 24px;
+    display: grid;
+    gap: 16px
+  }
+
+  .days {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px
+  }
+
+  .day {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 4px;
+    text-align: center;
+    font-size: 15px;
+    color: var(--ink-2);
+    background: #fff;
+    cursor: pointer;
+    font-family: var(--sans)
+  }
+
+  .day b {
+    display: block;
+    font: 800 26px/1.15 var(--slab);
+    color: var(--ink)
+  }
+
+  .day[aria-pressed="true"] {
+    border-color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--ink)
+  }
+
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px
+  }
+
+  .slot {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 13px 4px;
+    text-align: center;
+    font: 600 16px/1 var(--sans);
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer
+  }
+
+  .slot[aria-pressed="true"] {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink)
+  }
+
+  .cal-body .btn {
+    width: 100%
+  }
+
+  .note {
+    font-size: 14px;
+    color: var(--ink-2);
+    text-align: center
+  }
+
+  .cal-foot {
+    padding: 18px 24px;
+    border-top: 1px solid var(--rule);
+    background: var(--mist);
+    font-size: 18px;
+    color: var(--ink-2);
+    text-align: center
+  }
+
+  .foot {
+    border-top: 1px solid var(--rule);
+    padding-block: 28px;
+    font-size: 15px;
+    color: var(--ink-2)
+  }
+
+  .foot .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px
+  }
+
+  /* Chat and mobile bar */
+  .chat {
+    position: fixed;
+    right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: #fff;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 22px 14px 16px;
+    font: 700 16px/1 var(--sans);
+    cursor: pointer;
+    box-shadow: 0 10px 28px rgba(20, 33, 61, .28)
+  }
+
+  .chat i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #34D399
+  }
+
+  .mbar {
+    display: none
+  }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 110px;
+    transform: translateX(-50%);
+    z-index: 40;
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    max-width: calc(100% - 32px)
+  }
+
+  @media (max-width:1000px) {
+
+    .hero .lead,
+    .p1,
+    .p2 .top2,
+    .p3,
+    .billing .wrap,
+    .who .head,
+    .proof .head,
+    .faq .wrap,
+    .book .wrap,
+    .pains .wrap {
+      grid-template-columns: 1fr
+    }
+
+    .pains .copy {
+      position: static
+    }
+
+    .stage-in {
+      grid-template-columns: 1fr
+    }
+
+    .stage figure {
+      height: 260px;
+      border-radius: 12px
+    }
+
+    .stage figcaption {
+      bottom: 12px
+    }
+
+    .vid {
+      border-radius: 12px;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .patches {
+      margin-top: 28px;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+
+    .wall {
+      grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .inv {
+      grid-template-columns: 1fr
+    }
+
+    .runs {
+      border-right: 0;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .stats {
+      justify-content: center
+    }
+
+    .stage {
+      padding-bottom: 28px
+    }
+  }
+
+  @media (max-width:720px) {
+    body {
+      font-size: 18px;
+      padding-bottom: 84px
+    }
+
+    .wrap {
+      padding-inline: 16px
+    }
+
+    .top .chatlink,
+    .chat {
+      display: none
+    }
+
+    .hero .lead {
+      padding-block: 32px 32px;
+      gap: 24px
+    }
+
+    .hero .side .btn {
+      width: 100%
+    }
+
+    .stage::before {
+      left: 16px;
+      right: 16px
+    }
+
+    .vid {
+      aspect-ratio: 16/9
+    }
+
+    .vbody {
+      grid-template-columns: 1fr
+    }
+
+    .steps {
+      display: none
+    }
+
+    .vrow {
+      grid-template-columns: 16px minmax(0, 1fr) minmax(0, 1fr)
+    }
+
+    .vrow .sw {
+      display: none
+    }
+
+    .play>span {
+      font-size: 15px
+    }
+
+    .stage figure {
+      height: 200px
+    }
+
+    .patches {
+      gap: 18px 14px
+    }
+
+    .patch {
+      width: 96px;
+      height: 96px;
+      font-size: 11px;
+      padding: 12px
+    }
+
+    .patch.rect {
+      width: 120px;
+      height: 80px
+    }
+
+    .pw small {
+      font-size: 14px
+    }
+
+    .pw:nth-child(5) {
+      display: none
+    }
+
+    .suppliers li {
+      font-size: 19px;
+      padding: 4px 12px
+    }
+
+    .suppliers li.any {
+      margin: 8px 0 0
+    }
+
+    .pains,
+    .product,
+    .who,
+    .faq {
+      padding-block: 80px
+    }
+
+    .verdict {
+      padding: 26px 22px
+    }
+
+    .p2,
+    .counter {
+      margin-top: 96px
+    }
+
+    .store-b {
+      grid-template-columns: 1fr
+    }
+
+    .store-grid {
+      border-right: 0;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .pos {
+      grid-template-columns: 1fr
+    }
+
+    .pos-l {
+      border-right: 0;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .wall {
+      gap: 40px 12px
+    }
+
+    .wall .patch {
+      width: 118px;
+      height: 118px;
+      font-size: 12.5px
+    }
+
+    .wall .patch.rect {
+      width: 138px;
+      height: 96px
+    }
+
+    .wall li>span {
+      font-size: 15.5px
+    }
+
+    .stat .patch {
+      width: 170px;
+      height: 170px;
+      font-size: 40px
+    }
+
+    .stat .patch.shield {
+      width: 164px;
+      height: 184px
+    }
+
+    .stat .patch.rect {
+      width: 220px;
+      height: 136px
+    }
+
+    .days {
+      grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .day:nth-child(n+4) {
+      display: none
+    }
+
+    .slots {
+      grid-template-columns: 1fr 1fr
+    }
+
+    .mbar {
+      display: flex;
+      gap: 10px;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 30;
+      background: #fff;
+      border-top: 1px solid var(--rule);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+      transform: translateY(110%);
+      transition: transform .25s
+    }
+
+    .mbar.show {
+      transform: none
+    }
+
+    .mbar .btn {
+      flex: 1;
+      font-size: 17px;
+      padding: 16px
+    }
+
+    .mbar .chat-m {
+      background: #fff;
+      color: var(--ink);
+      border: 2px solid var(--rule);
+      border-radius: 10px;
+      font: 700 16px/1 var(--sans);
+      padding: 0 18px;
+      cursor: pointer
+    }
+  }
+
+  @media (max-width: 480px) {
+    .store-grid {
+      grid-template-columns: 1fr
+    }
+    .patches {
+      gap: 12px 8px
+    }
+    .patch {
+      width: 84px;
+      height: 84px;
+      font-size: 10px;
+      padding: 8px
+    }
+    .patch.rect {
+      width: 100px;
+      height: 70px
+    }
+    .patch.shield {
+      width: 84px;
+      height: 92px
+    }
+    .top .wrap {
+      padding-inline: 12px
+    }
+    .top .logo {
+      font-size: 17px
+    }
+    #booking-embed iframe {
+      height: 580px
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce) {
+    html {
+      scroll-behavior: auto
+    }
+
+    * {
+      transition: none !important
+    }
+  }
+</style>
+
+<!--
+  ONE SYSTEM LANDING PAGE (direction B: embroidered patch)
+  Developer setup is the CONFIG block in the <script> at the bottom:
+    vslEmbedUrl      YouTube / Vimeo / Wistia embed URL for the walkthrough video
+    bookingEmbedUrl  Calendly / GoHighLevel / Cal.com inline booking URL (ad tracking tags pass through)
+    openChat()       open your live chat widget here
+    track()          Google Ads / GA4 conversion events
+  Photos in img/ are generated stand-ins. Replace with real shop photos before launch.
+  Client names in the hero patches are labeled examples, not real customers.
+  Orange is reserved for things you can click.
+-->
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#">One System <small>by Solvevare</small></a>
+    <div class="cta"><button class="chatlink" type="button" data-chat data-cta="header_chat">Chat with us</button><a
+        class="btn btn-sm" href="https://calendly.com/solvevare/business-meeting?back=1&month=2026-10"
+        data-cta="header_book">Book a demo</a></div>
   </div>
+</header>
 
-  <div class="video-wrap">
-    <video controls src="https://solvevare-videos.s3.us-east-2.amazonaws.com/2026-07-10+05-57-08.mp4"></video>
-  </div>
+<main>
+  <!-- 1. HERO -->
+  <section class="hero" id="hero">
+    <div class="wrap lead">
+      <h1>Hotels, hospitals, schools, trades. Run every <span class="sew">uniform program</span> from one place.</h1>
+      <div class="side">
+        <p class="lede">Give each client their own ordering website in under 10 minutes. Your inventory and point of
+          sale are already connected.</p>
+        <div class="cta"><a class="btn" href="https://calendly.com/solvevare/business-meeting?back=1&month=2026-10"
+            data-cta="hero_book">Book a demo</a><button class="chatlink" type="button" data-chat data-cta="hero_chat">or
+            chat with us now</button></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="wrap stage-in">
+        <div class="vid" id="video">
+          <video controls playsinline preload="metadata" src="https://solvevare-videos.s3.us-east-2.amazonaws.com/2026-07-10+05-57-08.mp4"></video>
+        </div>
+        <figure><img src="assets/images/photo-b.jpg"
+            alt="An embroidery machine stitching a white logo onto a navy polo, with navy, white, maroon and gold thread">
+          <figcaption>Logo, left chest. Added at checkout.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="patches" aria-label="Example client stores" style="
+    margin-top: 20px;
+">
+        <div class="pw">
+          <div class="patch" style="--pc:var(--navy)"><span style="color:#fff">Harbor<br>Hotels</span></div>
+          <small><b>Store live</b>212 staff</small>
+        </div>
+        <div class="pw">
+          <div class="patch shield" style="--pc:var(--ceil)"><span style="color:#fff">St. Anne's<br>Medical</span></div>
+          <small><b>Store live</b>Scrubs in Ceil Blue</small>
+        </div>
+        <div class="pw">
+          <div class="patch rect" style="--pc:var(--olive)"><span style="color:var(--hivis)">Ridge<br>Electric</span>
+          </div><small><b>Store live</b>Hi-vis, FR shirts</small>
+        </div>
+        <div class="pw">
+          <div class="patch" style="--pc:var(--maroon)"><span style="color:#fff">Lakeview<br>Schools</span></div>
+          <small><b>Store live</b>Staff and spirit wear</small>
+        </div>
+        <div class="pw">
+          <div class="patch shield" style="--pc:var(--charcoal)"><span style="color:#fff">Metro<br>Transit</span></div>
+          <small><b>Setting up</b>8 min so far</small>
+        </div>
+      </div>
+      <p class="caption">Example client stores. Each one gets its own logo, products, prices and allowances.</p>
+    </div>
+  </section>
 
-  <div class="cta-block" id="contact">
-    <p>Ready to see how this fits your operation?</p>
-    <a href="https://calendly.com/solvevare/" class="cta-btn">Book a Walkthrough</a>
-  </div>
+  <!-- 2. SUPPLIERS -->
+  <section class="suppliers" aria-label="Supplier catalogs">
+    <div class="wrap">
+      <span class="lead">Catalogs ready to load</span>
+      <ul>
+        <li>SanMar</li>
+        <li>Bodek and Rhodes</li>
+        <li>Core365</li>
+        <li>Nike</li>
+        <li>Adidas</li>
+        <li class="any">+ any supplier you use</li>
+      </ul>
+    </div>
+  </section>
 
-  <footer>© 2026 Solvevare &nbsp;·&nbsp; www.solvevare.com</footer>
+  <!-- 3. PAIN POINTS -->
+  <section class="pains" aria-labelledby="pain-h">
+    <div class="wrap">
+      <div class="copy">
+        <span class="label">Heard at the counter</span>
+        <h2 id="pain-h">Every new client makes your week harder</h2>
+        <p class="lede">We hear the same 6 things from uniform suppliers. Count how many sound like your shop.</p>
+      </div>
+      <div>
+        <ul class="quotes">
+          <li>
+            <blockquote>"I keep a different price sheet for every client."</blockquote>
+            <p>And you're the only one who knows which version is current.</p>
+          </li>
+          <li>
+            <blockquote>"Every client wants a website to order from."</blockquote>
+            <p>A custom site costs thousands. Saying no can cost you the account.</p>
+          </li>
+          <li>
+            <blockquote>"Month-end billing takes me a whole week."</blockquote>
+            <p>Matching every order to a person, an allowance and a PO by hand.</p>
+          </li>
+          <li>
+            <blockquote>"We sold it. Then the supplier was out."</blockquote>
+            <p>Your client found out when their order didn't show up.</p>
+          </li>
+          <li>
+            <blockquote>"The counter says 12. The website says 4."</blockquote>
+            <p>2 counts for the same shelf, and neither one is right.</p>
+          </li>
+          <li>
+            <blockquote>"Somebody forgot the logo again."</blockquote>
+            <p>Embroidery, name tags and hems tracked on paper get missed at pickup.</p>
+          </li>
+        </ul>
+        <div class="verdict">
+          <p>If 2 or more of these sound like your shop, One System was built for you.</p>
+          <a class="btn" href="https://calendly.com/solvevare/business-meeting?back=1&month=2026-10"
+            data-cta="pain_book">Show me how it works</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</body>
-</html>
+  <hr class="seam">
+
+  <!-- 4. PRODUCT -->
+  <section class="product" aria-labelledby="product-h">
+    <div class="wrap">
+      <div class="intro">
+        <span class="label">What you get</span>
+        <h2 id="product-h">Ordering sites, inventory and your counter. Same products, same stock.</h2>
+        <p class="lede">A sale anywhere updates the count everywhere. Here are the 3 parts.</p>
+      </div>
+
+      <div class="p1">
+        <div class="part">
+          <span class="num">Part 1 of 3 · Client ordering sites</span>
+          <h3>A store for every client, with their logo and their rules</h3>
+          <p>Each client gets their own website with their products, their prices and their allowances. Their staff log
+            in and order. You don't build anything.</p>
+          <ul class="ticks">
+            <li>Set up a new client in under 10 minutes</li>
+            <li>Show each team only the items and colors they're allowed</li>
+            <li>Allowances by item count or by dollar amount</li>
+            <li>Starter kits for new hires in 1 click</li>
+          </ul>
+        </div>
+        <div class="screen" aria-label="Example: a client's staff uniform store">
+          <div class="sbar"><b>yourshop.com/harbor-hotels</b><span>Staff store</span></div>
+          <div class="store-h">
+            <div class="who-store">
+              <div class="patch mini" style="--pc:var(--navy)" aria-hidden="true"></div><b>Harbor Hotels<br><span
+                  style="font:400 14px/1.3 var(--sans);color:var(--ink-2)">Staff uniforms</span></b>
+            </div>
+            <div class="allow">
+              <div class="kv"><span>Maria Lopez · Front desk</span><b>4 of 10 used</b></div>
+              <div class="meter"><i style="width:40%"></i></div>
+            </div>
+          </div>
+          <div class="store-b">
+            <div class="store-grid">
+              <div class="prod sel">
+                <div class="im" style="background:#E7ECF5"><svg viewBox="0 0 24 24">
+                    <path d="M8 3l4 2 4-2 5 4-2.5 3.5L17 9.5V21H7V9.5L5.5 10.5 3 7z" fill="#1D3461" />
+                    <path d="M11 5h2v4h-2z" fill="#fff" opacity=".45" />
+                    <circle cx="15" cy="11" r="1" fill="#fff" />
+                  </svg></div><b>Front desk polo</b><small>Navy · S to 3XL</small>
+              </div>
+              <div class="prod">
+                <div class="im" style="background:#F3F4F6"><svg viewBox="0 0 24 24">
+                    <path d="M8 3l4 2 4-2 5 4-2.5 3.5L17 9.5V21H7V9.5L5.5 10.5 3 7z" fill="#fff" stroke="#9AA4B5"
+                      stroke-width=".8" />
+                    <circle cx="10.5" cy="11" r=".8" fill="#9AA4B5" />
+                    <circle cx="13.5" cy="11" r=".8" fill="#9AA4B5" />
+                    <circle cx="10.5" cy="14.5" r=".8" fill="#9AA4B5" />
+                    <circle cx="13.5" cy="14.5" r=".8" fill="#9AA4B5" />
+                  </svg></div><b>Chef coat</b><small>White · XS to 2XL</small>
+              </div>
+              <div class="prod">
+                <div class="im" style="background:#ECEFF7"><svg viewBox="0 0 24 24">
+                    <path d="M8 3l2 3h4l2-3 5 4-2.5 3.5L17 9.5V21H7V9.5L5.5 10.5 3 7z" fill="#92A6CF" />
+                    <path d="M14 13h2.5v3H14z" fill="#fff" opacity=".4" />
+                  </svg></div><b>Housekeeping tunic</b><small>Ceil Blue · XS to 3XL</small>
+              </div>
+              <div class="prod">
+                <div class="im" style="background:#F4ECEC"><svg viewBox="0 0 24 24">
+                    <path d="M9 3h6v4l4 2v12H5V9l4-2z" fill="#6E2233" />
+                    <path d="M8 13h8v4H8z" fill="#fff" opacity=".2" />
+                  </svg></div><b>Bistro apron</b><small>Burgundy · One size</small>
+              </div>
+            </div>
+            <div class="pdp">
+              <h4>Front desk polo</h4>
+              <div>
+                <div class="lbl">Color</div>
+                <div class="colors"><i class="on" style="background:#1D3461"></i><i
+                    style="background:#fff"></i><span>Navy</span></div>
+              </div>
+              <div>
+                <div class="lbl">Size</div>
+                <div class="chips"><i>S</i><i class="on">M</i><i>L</i><i>XL</i><i>2XL</i><i class="off">3XL</i></div>
+              </div>
+              <div>
+                <div class="lbl">Included</div>
+                <div style="font-size:14px">Harbor Hotels logo, left chest</div>
+              </div>
+              <div class="addbar"><span>Uses 1 of your 6 left</span><span>Add to order</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p2">
+        <div class="top2">
+          <div class="part">
+            <span class="num">Part 2 of 3 · Inventory</span>
+            <h3>Know what's on the shelf, size by size</h3>
+          </div>
+          <div class="part">
+            <p>Live stock for every size and color, down to the bin it sits in. Every online order and every counter
+              sale takes it off the count on its own.</p>
+            <ul class="ticks">
+              <li>Find any item by aisle, shelf and bin</li>
+              <li>See a size running low before you're out</li>
+              <li>Supplier catalogs stay in sync on their own</li>
+            </ul>
+          </div>
+        </div>
+        <div class="screen" aria-label="Example: inventory screen">
+          <div class="sbar"><b>Inventory · Main warehouse</b><span>Updated just now</span></div>
+          <div class="inv">
+            <div class="runs">
+              <h4>Front desk polo <small>Style K500 · on hand by size</small></h4>
+              <div style="overflow-x:auto">
+                <table class="matrix">
+                  <thead>
+                    <tr>
+                      <th>Color</th>
+                      <th>XS</th>
+                      <th>S</th>
+                      <th>M</th>
+                      <th>L</th>
+                      <th>XL</th>
+                      <th>2XL</th>
+                      <th>3XL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><i style="background:#1D3461"></i>Navy</td>
+                      <td>6</td>
+                      <td>18</td>
+                      <td>42</td>
+                      <td class="lo">3</td>
+                      <td>27</td>
+                      <td class="zero">0</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td><i style="background:#fff"></i>White</td>
+                      <td>4</td>
+                      <td>11</td>
+                      <td>23</td>
+                      <td>19</td>
+                      <td>14</td>
+                      <td>8</td>
+                      <td class="lo">2</td>
+                    </tr>
+                    <tr>
+                      <td><i style="background:#2B2B2B"></i>Black</td>
+                      <td>2</td>
+                      <td>9</td>
+                      <td>15</td>
+                      <td>15</td>
+                      <td>10</td>
+                      <td>6</td>
+                      <td>3</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="legend"><span class="l1">Low, below 5</span><span class="l2">Out, reorder</span></div>
+            </div>
+            <div class="bins">
+              <h4>Pick list for today</h4>
+              <div class="binrow"><b>A1-03</b>
+                <div>Polo · Navy · L<small>Harbor Hotels · PO HH-0311</small></div><span class="chip warn">3 left</span>
+              </div>
+              <div class="binrow"><b>B2-07</b>
+                <div>Chef coat · White · M<small>Harbor Hotels</small></div><span class="chip ok">31 left</span>
+              </div>
+              <div class="binrow"><b>C1-02</b>
+                <div>Scrub top · Ceil Blue · S<small>St. Anne's Medical</small></div><span class="chip bad">On
+                  order</span>
+              </div>
+              <div class="binrow"><b>A3-09</b>
+                <div>Work pant · Khaki · 34<small>Ridge Electric</small></div><span class="chip ok">27 left</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="counter">
+      <div class="wrap p3">
+        <div class="screen" aria-label="Example: point of sale screen">
+          <div class="sbar"><b>Point of sale · Counter 1</b><span class="offline">Works offline</span></div>
+          <div class="pos">
+            <div class="pos-l">
+              <div class="scan">▮▮▯▮ <span>Scanned <b>0083921</b> · Polo Navy M</span></div>
+              <div class="cust"><small>Customer</small><b>Maria Lopez · Harbor Hotels</b></div>
+              <div class="line">
+                <div>Front desk polo · Navy · M<em>+ Logo embroidery, left chest</em></div><span>×2</span>
+              </div>
+              <div class="line">
+                <div>Work pant · Khaki · 30<em>+ Hem to 29"</em></div><span>×1</span>
+              </div>
+              <div class="line">
+                <div>Name tag<em>MARIA · Front desk</em></div><span>×1</span>
+              </div>
+            </div>
+            <div class="pos-r">
+              <div class="kv"><span>Allowance after this</span><b>8 of 10 used</b></div>
+              <div class="meter"><i style="width:80%"></i></div>
+              <div class="kv"><span>Billed to</span><b>Harbor Hotels</b></div>
+              <div class="kv"><span>PO</span><b>HH-2026-0311</b></div>
+              <div class="kv"><span>Custom work</span><b>2 jobs queued</b></div>
+              <div class="charge">Charge to allowance</div>
+            </div>
+          </div>
+        </div>
+        <div class="side part">
+          <span class="num">Part 3 of 3 · Point of sale</span>
+          <h3>Sell at the counter, bill the client on its own</h3>
+          <p>Someone walks in. Pick their name and their company. The order comes off their allowance and lands on the
+            client's monthly bill.</p>
+          <ul class="ticks">
+            <li>Runs on a computer, tablet or phone</li>
+            <li>Keeps working if the internet drops</li>
+            <li>Add logos, name tags and hemming to any item</li>
+          </ul>
+          <figure><img src="assets/images/photo-c.jpg"
+              alt="Bagged navy polos with size stickers, a barcode scanner and folded khaki work pants on a packing table"
+              loading="lazy">
+            <figcaption>Scan it, bag it, bill it to the client.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. ALLOWANCES AND BILLING -->
+  <section class="billing" aria-labelledby="bill-h">
+    <div class="wrap">
+      <div class="copy">
+        <span class="label">Allowances and billing</span>
+        <h2 id="bill-h">Clients order all month. You send 1 clean bill.</h2>
+        <p class="lede">Every item is tied to the person who ordered it, so the month-end bill is already done.</p>
+        <ol class="flow">
+          <li>
+            <div><b>Set allowances</b><span>Give each team a number of items or a dollar amount for the year.</span>
+            </div>
+          </li>
+          <li>
+            <div><b>Staff order</b><span>Online from their own store, or in person at your counter.</span></div>
+          </li>
+          <li>
+            <div><b>Track it live</b><span>See who ordered what and how much each person has left.</span></div>
+          </li>
+          <li>
+            <div><b>Send the bill</b><span>1 statement per client, broken down by person and PO.</span></div>
+          </li>
+        </ol>
+        <div class="cta"><a class="btn" href="https://calendly.com/solvevare/business-meeting?back=1&month=2026-10"
+            data-cta="billing_book">See it with your numbers</a></div>
+      </div>
+      <div class="stmt" aria-label="Example: monthly client statement">
+        <div class="t1"><span>MONTHLY STATEMENT</span><span>HARBOR HOTELS · OCT</span></div>
+        <hr>
+        <div class="meta"><span>Program</span><span>Front desk, housekeeping, kitchen</span><span>Staff</span><span>212
+            invited, 64 ordered</span><span>Allowance</span><span>10 items per person, per year</span></div>
+        <hr>
+        <div class="sc">
+          <table>
+            <thead>
+              <tr>
+                <th>Person</th>
+                <th>PO</th>
+                <th>Items</th>
+                <th class="r">Used</th>
+                <th class="r">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Maria Lopez</td>
+                <td>HH-0311</td>
+                <td>4</td>
+                <td class="r">8/10</td>
+                <td class="r">$186.40</td>
+              </tr>
+              <tr class="sub">
+                <td colspan="5">2 polo M, work pant 30 + hem, name tag</td>
+              </tr>
+              <tr>
+                <td>James Okafor</td>
+                <td>HH-0311</td>
+                <td>3</td>
+                <td class="r">3/10</td>
+                <td class="r">$142.00</td>
+              </tr>
+              <tr class="sub">
+                <td colspan="5">2 chef coat L, apron</td>
+              </tr>
+              <tr>
+                <td>Priya Nair</td>
+                <td>HH-0314</td>
+                <td>5</td>
+                <td class="r">5/10</td>
+                <td class="r">$161.75</td>
+              </tr>
+              <tr class="sub">
+                <td colspan="5">3 tunic Ceil Blue S, 2 pant 26</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="color:#6B7486">+ 61 more people</td>
+                <td class="r" style="color:#6B7486">$9,870.35</td>
+              </tr>
+              <tr class="tot">
+                <td colspan="4">Total for October</td>
+                <td class="r">$10,360.50</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr>
+        <div style="font-size:12.5px;color:#6B7486">Example statement. Names and amounts are sample data.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHO IT'S FOR -->
+  <section class="who" aria-labelledby="who-h">
+    <div class="wrap">
+      <div class="head">
+        <div style="display:grid;gap:20px"><span class="label">Who it's for</span>
+          <h2 id="who-h">Any business that supplies uniforms to other businesses</h2>
+        </div>
+        <p class="note"><b>Serving more than 1 client program?</b> That's who this is for. Listed A to Z.</p>
+      </div>
+      <ul class="wall">
+        <li>
+          <div class="patch rect" style="--pc:var(--charcoal)"><span>Airlines and transport</span></div><span>Crew wear,
+            drivers, station staff</span>
+        </li>
+        <li>
+          <div class="patch" style="--pc:var(--navy)"><span>Corporate and office</span></div><span>Logo polos,
+            button-downs, outerwear</span>
+        </li>
+        <li>
+          <div class="patch shield" style="--pc:var(--ceil)"><span>Healthcare</span></div><span>Scrubs by department,
+            lab coats</span>
+        </li>
+        <li>
+          <div class="patch" style="--pc:var(--gold)"><span>Hotels and hospitality</span></div><span>Front desk,
+            housekeeping, banquet</span>
+        </li>
+        <li>
+          <div class="patch shield" style="--pc:var(--forest)"><span>Public safety and security</span></div><span>Duty
+            wear, patches, outerwear</span>
+        </li>
+        <li>
+          <div class="patch rect" style="--pc:var(--maroon)"><span>Restaurants and food service</span></div><span>Chef
+            coats, aprons, server shirts</span>
+        </li>
+        <li>
+          <div class="patch" style="--pc:#2D4F86"><span>Schools</span></div><span>Staff wear, spirit wear, team
+            orders</span>
+        </li>
+        <li>
+          <div class="patch rect" style="--pc:var(--olive)"><span style="color:var(--hivis)">Trades and
+              construction</span></div><span>Hi-vis, FR shirts, work pants</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7. PROOF -->
+  <section class="proof" aria-labelledby="proof-h">
+    <div class="wrap">
+      <div class="head">
+        <div style="display:grid;gap:20px"><span class="label">In use today</span>
+          <h2 id="proof-h">Built inside a working uniform business</h2>
+        </div>
+        <p class="lede">Solvevare built One System inside a real uniform supplier. Its client ordering sites are used
+          every day.</p>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="patch" style="--pc:var(--navy)"><span>9,000+</span></div><span><b>Products</b> loaded and ready to
+            sell</span>
+        </div>
+        <div class="stat">
+          <div class="patch shield light" style="--pc:#fff"><span>~1M</span></div><span><b>Size and color</b> variants
+            tracked</span>
+        </div>
+        <div class="stat">
+          <div class="patch rect" style="--pc:var(--maroon)"><span style="color:#fff">&lt;10 min</span></div><span><b>To
+              set up</b> a new client store</span>
+        </div>
+      </div>
+      <div class="after">
+        <p>On the call, we'll show you the real system set up for one of your own clients.</p>
+        <a class="btn" href="https://calendly.com/solvevare/business-meeting?back=1&month=2026-10"
+          data-cta="proof_book">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="copy">
+        <span class="label">Questions</span>
+        <h2 id="faq-h">What owners ask us first</h2>
+        <button class="chatlink" type="button" data-chat data-cta="faq_chat" style="justify-self:start">Ask us something
+          else in chat</button>
+      </div>
+      <div class="qs">
+        <details open>
+          <summary>Is this only for government contracts?</summary>
+          <p>No. It works for any uniform supplier with more than 1 client program: hotels, hospitals, schools, offices,
+            restaurants, trades, security and public safety.</p>
+        </details>
+        <details>
+          <summary>Do I need to be good with computers?</summary>
+          <p>No. Setting up a client is 7 steps, mostly picking from lists. We set up your first client with you on a
+            call.</p>
+        </details>
+        <details>
+          <summary>Will it work with my suppliers?</summary>
+          <p>Yes. SanMar, Bodek and Rhodes, Core365, Nike and Adidas catalogs are ready to load. Any other supplier can
+            be added from a spreadsheet.</p>
+        </details>
+        <details>
+          <summary>Can my client approve orders first?</summary>
+          <p>Yes. You pick who can order: only the client's manager, everyone, or everyone with a manager's approval.
+          </p>
+        </details>
+        <details>
+          <summary>Does it handle allowances and monthly billing?</summary>
+          <p>Yes. Set item or dollar allowances per team, then bill each client from 1 statement at the end of the
+            month.</p>
+        </details>
+        <details>
+          <summary>What if my internet goes down?</summary>
+          <p>The point of sale keeps working offline, so your counter never stops. It catches up when you're back
+            online.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>It depends on how many clients and locations you have. You'll get a clear price on the demo call.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. BOOK -->
+  <section class="book" id="book" aria-labelledby="book-h">
+    <div class="wrap">
+      <div class="copy">
+        <span class="label">Free 30-minute demo</span>
+        <h2 id="book-h">See it set up for one of your clients</h2>
+        <p class="lede">Pick a time. We'll walk through One System using one of your real client programs.</p>
+        <ul class="ticks">
+          <li>A store built around one of your clients</li>
+          <li>Answers on suppliers, allowances and billing</li>
+          <li>A clear setup plan and price</li>
+        </ul>
+      </div>
+      <div class="cal">
+        <div class="cal-head"><b>Pick a time</b><span>30 min · video call</span></div>
+        <div id="booking-embed">
+          <div class="cal-body">
+            <div class="days" id="days"></div>
+            <div class="slots" id="slots"></div>
+            <a class="btn" id="booking-link" href="https://calendly.com/solvevare/business-meeting?back=1&month=2026-10"
+              data-cta="book_open">Book this time</a>
+            <p class="note">Design preview. Your live calendar loads here once it's connected.</p>
+          </div>
+        </div>
+        <div class="cal-foot">Rather talk now? <button class="chatlink" type="button" data-chat
+            data-cta="book_chat">Chat with us</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap"><span>© <span id="yr">2026</span> Solvevare. One System is a Solvevare product.</span><span>Supplier
+      names belong to their owners.</span></div>
+</footer>
+
+<div class="mbar" id="mbar">
+  <a class="btn" href="https://calendly.com/solvevare/business-meeting?back=1&month=2026-10" data-cta="mbar_book">Book a
+    demo</a>
+  <button class="chat-m" type="button" data-chat data-cta="mbar_chat">Chat</button>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+  /* ===== CONFIG: the only block developers need to edit ===== */
+  var CONFIG = {
+    vslEmbedUrl: "https://solvevare-videos.s3.us-east-2.amazonaws.com/2026-07-10+05-57-08.mp4",       // Video URL from index.html
+    bookingEmbedUrl: "https://calendly.com/solvevare/business-meeting?back=1&month=2026-10",   // Calendly inline booking URL
+    openChat: function () { window.location.href = "https://solvevare.com/contact/"; },
+    track: function (name) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "cta_click", cta: name });
+      // if (window.gtag && /book/.test(name)) gtag('event','conversion',{send_to:'AW-XXXXXXX/XXXXXXX'});
+    }
+  };
+  /* ========================================================== */
+  function toast(m) { var t = document.getElementById("toast"); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { t.hidden = true }, 3000); }
+  function withAdParams(url) {
+    var keep = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid"], out = [];
+    try { var q = new URLSearchParams(location.search); keep.forEach(function (k) { if (q.get(k)) out.push(k + "=" + encodeURIComponent(q.get(k))); }); } catch (e) { }
+    return out.length ? url + (url.indexOf("?") > -1 ? "&" : "?") + out.join("&") : url;
+  }
+
+  // Video
+  var posterBtn = document.getElementById("poster");
+  if (posterBtn) {
+    posterBtn.addEventListener("click", function () {
+      var url = CONFIG.vslEmbedUrl || "https://solvevare-videos.s3.us-east-2.amazonaws.com/2026-07-10+05-57-08.mp4";
+      if (!url) { toast("The walkthrough video plays here once it's embedded."); return; }
+      var v = document.getElementById("video");
+      if (url.match(/\.(mp4|webm|ogg)(\?.*)?$/i) || url.includes(".mp4")) {
+        var videoTag = document.createElement("video");
+        videoTag.src = url;
+        videoTag.controls = true;
+        videoTag.autoplay = true;
+        videoTag.playsInline = true;
+        v.innerHTML = "";
+        v.appendChild(videoTag);
+      } else {
+        var f = document.createElement("iframe"), u = url;
+        f.src = u + (u.indexOf("?") > -1 ? "&" : "?") + "autoplay=1"; f.allow = "autoplay; fullscreen; picture-in-picture"; f.allowFullscreen = true; f.title = "One System walkthrough";
+        v.innerHTML = ""; v.appendChild(f);
+      }
+    });
+  }
+
+  // Booking: live embed if configured, otherwise a preview picker with the next 5 weekdays
+  if (CONFIG.bookingEmbedUrl) {
+    var b = document.getElementById("booking-embed"), f = document.createElement("iframe");
+    f.src = withAdParams(CONFIG.bookingEmbedUrl); f.title = "Book a demo"; f.loading = "lazy"; b.innerHTML = ""; b.appendChild(f);
+  } else {
+    var days = document.getElementById("days"), slots = document.getElementById("slots"), d = new Date(), n = 0, names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    while (n < 5) {
+      d.setDate(d.getDate() + 1); if (d.getDay() === 0 || d.getDay() === 6) continue;
+      var bt = document.createElement("button"); bt.type = "button"; bt.className = "day"; bt.setAttribute("aria-pressed", n === 1 ? "true" : "false");
+      bt.innerHTML = names[d.getDay()] + "<b>" + d.getDate() + "</b>"; days.appendChild(bt); n++;
+    }
+    ["9:00 AM", "10:30 AM", "12:00 PM", "1:30 PM", "3:00 PM", "4:30 PM"].forEach(function (t, i) {
+      var s = document.createElement("button"); s.type = "button"; s.className = "slot"; s.textContent = t; s.setAttribute("aria-pressed", i === 1 ? "true" : "false"); slots.appendChild(s);
+    });
+    [days, slots].forEach(function (group) {
+      group.addEventListener("click", function (e) {
+        var t = e.target.closest("button"); if (!t) return;
+        group.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === t)) });
+      });
+    });
+    document.getElementById("booking-link").addEventListener("click", function (e) {
+      window.location.href = "https://calendly.com/solvevare/business-meeting?back=1&month=2026-10";
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    var c = e.target.closest("[data-cta]"); if (c) CONFIG.track(c.dataset.cta);
+    if (e.target.closest("[data-chat]")) { e.preventDefault(); CONFIG.openChat(); }
+  });
+
+  // Mobile bar shows after the hero, hides at the booking section
+  (function () {
+    var bar = document.getElementById("mbar"), hero = document.getElementById("hero"), book = document.getElementById("book");
+    if (!("IntersectionObserver" in window)) { bar.classList.add("show"); return; }
+    var out = false, inBook = false; function u() { bar.classList.toggle("show", out && !inBook); }
+    new IntersectionObserver(function (e) { out = !e[0].isIntersecting; u(); }).observe(hero);
+    new IntersectionObserver(function (e) { inBook = e[0].isIntersecting; u(); }, { threshold: .15 }).observe(book);
+  })();
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
