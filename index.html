@@ -714,9 +714,10 @@
 
   .product .intro {
     display: grid;
-    gap: 20px;
-    max-width: 800px;
-    margin-bottom: 80px
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    gap: 24px 64px;
+    align-items: end;
+    margin-bottom: 64px
   }
 
   .part {
@@ -799,7 +800,7 @@
     display: grid;
     grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
     gap: 64px;
-    align-items: center
+    align-items: start
   }
 
   .store-h {
@@ -1006,7 +1007,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 24px 64px;
-    align-items: end
+    align-items: start
   }
 
   .inv {
@@ -1184,7 +1185,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
     gap: 64px;
-    align-items: center
+    align-items: start
   }
 
   .pos {
@@ -1867,6 +1868,7 @@
   @media (max-width:1000px) {
 
     .hero .lead,
+    .product .intro,
     .p1,
     .p2 .top2,
     .p3,
@@ -2216,7 +2218,10 @@
     <div class="stage">
       <div class="wrap stage-in">
         <div class="vid" id="video">
-          <video controls playsinline preload="metadata" src="https://solvevare-videos.s3.us-east-2.amazonaws.com/2026-07-10+05-57-08.mp4"></video>
+          <video id="hero-video" playsinline preload="auto" src="https://solvevare-videos.s3.us-east-2.amazonaws.com/2026-07-10+05-57-08.mp4"></video>
+          <button class="play" id="poster" type="button" data-cta="video_play"
+            aria-label="Play the walkthrough video"><span><i></i><span>Watch a client store get built<small>17-minute
+                  walkthrough</small></span></span></button>
         </div>
         <figure><img src="assets/images/photo-b.jpg"
             alt="An embroidery machine stitching a white logo onto a navy polo, with navy, white, maroon and gold thread">
@@ -2318,8 +2323,10 @@
   <section class="product" aria-labelledby="product-h">
     <div class="wrap">
       <div class="intro">
-        <span class="label">What you get</span>
-        <h2 id="product-h">Ordering sites, inventory and your counter. Same products, same stock.</h2>
+        <div style="display:grid;gap:20px">
+          <span class="label">What you get</span>
+          <h2 id="product-h">Ordering sites, inventory and your counter. Same products, same stock.</h2>
+        </div>
         <p class="lede">A sale anywhere updates the count everywhere. Here are the 3 parts.</p>
       </div>
 
@@ -2824,21 +2831,17 @@
   var posterBtn = document.getElementById("poster");
   if (posterBtn) {
     posterBtn.addEventListener("click", function () {
-      var url = CONFIG.vslEmbedUrl || "https://solvevare-videos.s3.us-east-2.amazonaws.com/2026-07-10+05-57-08.mp4";
-      if (!url) { toast("The walkthrough video plays here once it's embedded."); return; }
-      var v = document.getElementById("video");
-      if (url.match(/\.(mp4|webm|ogg)(\?.*)?$/i) || url.includes(".mp4")) {
-        var videoTag = document.createElement("video");
-        videoTag.src = url;
+      var videoTag = document.getElementById("hero-video");
+      if (videoTag) {
+        posterBtn.style.display = "none";
         videoTag.controls = true;
-        videoTag.autoplay = true;
-        videoTag.playsInline = true;
-        v.innerHTML = "";
-        v.appendChild(videoTag);
+        videoTag.play();
       } else {
-        var f = document.createElement("iframe"), u = url;
-        f.src = u + (u.indexOf("?") > -1 ? "&" : "?") + "autoplay=1"; f.allow = "autoplay; fullscreen; picture-in-picture"; f.allowFullscreen = true; f.title = "One System walkthrough";
-        v.innerHTML = ""; v.appendChild(f);
+        var url = CONFIG.vslEmbedUrl || "https://solvevare-videos.s3.us-east-2.amazonaws.com/2026-07-10+05-57-08.mp4";
+        var v = document.getElementById("video");
+        var vt = document.createElement("video");
+        vt.src = url; vt.controls = true; vt.autoplay = true; vt.playsInline = true;
+        v.innerHTML = ""; v.appendChild(vt);
       }
     });
   }
